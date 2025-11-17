@@ -37,8 +37,8 @@ export default function Header() {
 
     return <header className="fixed z-50 flex gap-6 justify-between items-center w-full h-16 bg-background-100 fit-content blur-20 md:h-20">
         <Link to="/"><Logo containerClass="gap-11.79" imageClass="size-10 md:size-8.25" fontClass="hidden text-3xxl md:block"/></Link>
-        <div className={`${search ? 'block' : 'hidden'} grow flex gap-4 items-center duration-300 lg:block`}>
-            <Search className="w-35 lg:max-w-125" placeholder="Search book"/>
+        <div className={`${search ? 'flex' : 'hidden'} grow gap-4 justify-center items-center duration-300 lg:flex`}>
+            <Search className="w-35 lg:w-auto lg:max-w-125" placeholder="Search book"/>
             <XIcon className="size-6 cursor-pointer lg:hidden" onClick={() => setSearch(false)}/>
         </div>
         <div className={`${search ? 'hidden' : 'flex'} gap-6 items-center duration-300 lg:flex`}>

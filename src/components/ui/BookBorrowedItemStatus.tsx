@@ -1,4 +1,4 @@
-export default function AccountBorrowedItemStatus() {
+export default function BookBorrowedItemStatus() {
     return <div className="flex gap-6 justify-between items-center">
         <div className="flex gap-1 items-center md:gap-3">
             <p className="text-sm font-bold md:text-base">Status</p>
