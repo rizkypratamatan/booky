@@ -9,7 +9,7 @@ export default function Cart() {
         <SectionTitle title="My Cart"/>
         <div className="flex flex-col gap-10 items-start md:flex-row">
             <section className="grow flex flex-col gap-6 w-full">
-                <CheckboxHorizontal containerClass="gap-4">Select All</CheckboxHorizontal>
+                <CheckboxHorizontal containerClass="gap-4" value="all">Select All</CheckboxHorizontal>
                 <CartList/>
                 <div className="horizontal-line"></div>
                 <CartList/>

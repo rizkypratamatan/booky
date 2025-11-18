@@ -1,15 +1,15 @@
 import CheckboxHorizontal from "@/components/ui/CheckboxHorizontal.tsx";
+import useCategories from "@/hooks/useCategories.ts";
+import type Category from "@/types/interfaces/Category.ts";
 import {Fragment} from "react";
 
 
 export default function CategoryFilterCategory() {
+    const {data} = useCategories();
+
     return <Fragment>
         <p className="text-lg font-bold">Category</p>
-        <CheckboxHorizontal containerClass="gap-1" aria-label="filter-category-checkbox">Fiction</CheckboxHorizontal>
-        <CheckboxHorizontal containerClass="gap-1" aria-label="filter-category-checkbox">Non-Fiction</CheckboxHorizontal>
-        <CheckboxHorizontal containerClass="gap-1" aria-label="filter-category-checkbox">Self-Improvement</CheckboxHorizontal>
-        <CheckboxHorizontal containerClass="gap-1" aria-label="filter-category-checkbox">Finance</CheckboxHorizontal>
-        <CheckboxHorizontal containerClass="gap-1" aria-label="filter-category-checkbox">Science</CheckboxHorizontal>
-        <CheckboxHorizontal containerClass="gap-1" aria-label="filter-category-checkbox">Education</CheckboxHorizontal>
+        {data?.data?.categories.map((category: Category, index: number) =>
+            <CheckboxHorizontal key={index} containerClass="gap-1" value={category.id.toString()} aria-label="filter-category-checkbox">{category.name}</CheckboxHorizontal>)}
     </Fragment>;
 }

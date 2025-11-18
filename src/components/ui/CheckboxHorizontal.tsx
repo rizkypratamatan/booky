@@ -7,11 +7,12 @@ type Props = {
     children: ReactNode;
     containerClass?: string,
     labelClass?: string;
+    value: string;
 };
 
-export default function CheckboxHorizontal({children, containerClass, labelClass, ...props}: Props) {
+export default function CheckboxHorizontal({children, containerClass, labelClass, value, ...props}: Props) {
     return <div className={`${containerClass} flex`}>
-        <Checkbox className="size-5" {...props}/>
+        <Checkbox className="size-5" value={value} {...props}/>
         <Label className={labelClass}>{children}</Label>
     </div>;
 }

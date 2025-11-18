@@ -2,9 +2,13 @@ import CategoryFilter from "@/components/category/CategoryFilter.tsx";
 import BookCard from "@/components/ui/BookCard.tsx";
 import Image from "@/components/ui/Image.tsx";
 import SectionTitle from "@/components/ui/SectionTitle.tsx";
+import useBooks from "@/hooks/useBooks.ts";
 
 
 export default function Category() {
+    const {data} = useBooks({page: 1, limit: 10});
+    console.log(data)
+
     return <div className="flex flex-col gap-4 md:gap-8">
         <SectionTitle title="Book List"/>
         <div className="flex flex-col gap-4 items-start md:flex-row md:gap-10">

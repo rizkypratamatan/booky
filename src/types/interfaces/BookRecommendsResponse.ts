@@ -1,7 +1,5 @@
-import type Author from "@/types/interfaces/Author.ts";
-import type Base from "@/types/interfaces/Base.ts";
 import type BaseResponse from "@/types/interfaces/BaseResponse.ts";
-import type Category from "@/types/interfaces/Category.ts";
+import type Book from "@/types/interfaces/Book.ts";
 
 
 export default interface BookRecommendsResponse extends BaseResponse {
@@ -10,38 +8,7 @@ export default interface BookRecommendsResponse extends BaseResponse {
 
 
 export interface BookRecommendResponseData {
-    books: BookRecommendResponseDataBook[];
+    books: Book[];
 
     mode: string;
-}
-
-
-export interface BookRecommendResponseDataBook extends Base {
-    author: Author;
-
-    authorId: number;
-
-    availableCopies: number;
-
-    borrowCount: number;
-
-    category: Category;
-
-    categoryId: number;
-
-    coverImage: string;
-
-    description: string;
-
-    isbn: string;
-
-    publishedYear: number;
-
-    rating: number;
-
-    reviewCount: number;
-
-    title: string;
-
-    totalCopies: number;
 }
