@@ -27,7 +27,7 @@ export default function DetailInfo({book}: Props) {
             </div>
             <div className="w-full horizontal-line md:8/10 lg:w-7/10"></div>
             <DetailDescription description={book?.description}/>
-            <DetailAction/>
+            <DetailAction id={book?.id}/>
         </div>
     </div>;
 }

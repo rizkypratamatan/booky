@@ -1,6 +1,7 @@
 import type Author from "@/types/interfaces/Author.ts";
 import type Base from "@/types/interfaces/Base.ts";
 import type Category from "@/types/interfaces/Category.ts";
+import type Review from "@/types/interfaces/Review.ts";
 
 
 export default interface Book extends Base {
@@ -27,6 +28,8 @@ export default interface Book extends Base {
     rating: number;
 
     reviewCount: number;
+
+    reviews: Review[];
 
     title: string;
 

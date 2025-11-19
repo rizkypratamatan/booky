@@ -1,14 +1,14 @@
 import AdminBookItem from "@/components/admin/AdminBookItem.tsx";
-import {Button} from "@/components/ui/button.tsx";
 import Search from "@/components/ui/Search.tsx";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs.tsx";
+import {Link} from "react-router";
 
 
 export default function AdminBook() {
     return <div className="flex flex-col gap-6">
         <h2 className="text-2xl font-bold md:text-2xxl">Book List</h2>
-        <Button className="w-full max-w-60 h-12 bg-primary-300 rounded-full text-sm font-bold text-neutral-25 md:text-base">Add
-            Book</Button>
+        <Link className="flex justify-center items-center w-full max-w-60 h-12 bg-primary-300 rounded-full text-sm font-bold text-neutral-25 md:text-base" to="/admin/book/add">Add
+            Book</Link>
         <Search className="max-w-136" placeholder="Search book"/>
         <Tabs className="gap-6" defaultValue="all">
             <TabsList className="gap-2 md:gap-3">

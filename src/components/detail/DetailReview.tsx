@@ -3,51 +3,27 @@ import {Avatar, AvatarFallback, AvatarImage} from "@/components/ui/avatar.tsx";
 import BookRating from "@/components/ui/BookRating.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import SectionTitle from "@/components/ui/SectionTitle.tsx";
+import type Review from "@/types/interfaces/Review.ts";
 
 
-export default function DetailReview() {
+type Props = {
+    reviews?: Review[];
+};
+
+export default function DetailReview({reviews}: Props) {
     return <section className="flex flex-col gap-4.5 items-center">
         <div className="flex flex-col gap-1 w-full md:gap-3">
             <SectionTitle title="Review"/>
             <BookRating rate="4.9 (24 Ulasan)"/>
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-            <DetailReviewCard name="John Doe" datetime="25 August 2025, 13:38" text="Lorem ipsum dolor sit amet consectetur. Pulvinar porttitor aliquam viverra nunc sed facilisis. Integer tristique nullam morbi mauris ante.">
-                <Avatar className="size-16">
-                    <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
-                    <AvatarFallback>Avatar</AvatarFallback>
-                </Avatar>
-            </DetailReviewCard>
-            <DetailReviewCard name="John Doe" datetime="25 August 2025, 13:38" text="Lorem ipsum dolor sit amet consectetur. Pulvinar porttitor aliquam viverra nunc sed facilisis. Integer tristique nullam morbi mauris ante.">
-                <Avatar className="size-16">
-                    <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
-                    <AvatarFallback>Avatar</AvatarFallback>
-                </Avatar>
-            </DetailReviewCard>
-            <DetailReviewCard name="John Doe" datetime="25 August 2025, 13:38" text="Lorem ipsum dolor sit amet consectetur. Pulvinar porttitor aliquam viverra nunc sed facilisis. Integer tristique nullam morbi mauris ante.">
-                <Avatar className="size-16">
-                    <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
-                    <AvatarFallback>Avatar</AvatarFallback>
-                </Avatar>
-            </DetailReviewCard>
-            <DetailReviewCard name="John Doe" datetime="25 August 2025, 13:38" text="Lorem ipsum dolor sit amet consectetur. Pulvinar porttitor aliquam viverra nunc sed facilisis. Integer tristique nullam morbi mauris ante.">
-                <Avatar className="size-16">
-                    <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
-                    <AvatarFallback>Avatar</AvatarFallback>
-                </Avatar>
-            </DetailReviewCard>
-            <DetailReviewCard name="John Doe" datetime="25 August 2025, 13:38" text="Lorem ipsum dolor sit amet consectetur. Pulvinar porttitor aliquam viverra nunc sed facilisis. Integer tristique nullam morbi mauris ante.">
-                <Avatar className="size-16">
-                    <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
-                    <AvatarFallback>Avatar</AvatarFallback>
-                </Avatar>
-            </DetailReviewCard>
-            <DetailReviewCard name="John Doe" datetime="25 August 2025, 13:38" text="Lorem ipsum dolor sit amet consectetur. Pulvinar porttitor aliquam viverra nunc sed facilisis. Integer tristique nullam morbi mauris ante.">
-                <Avatar className="size-16">
-                    <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
-                    <AvatarFallback>Avatar</AvatarFallback>
-                </Avatar>
-            </DetailReviewCard>
+            {reviews?.map((review: Review, index: number) =>
+                <DetailReviewCard key={index} name={review.user.name} datetime={review.createdAt.toString()} text={review.comment}>
+                    <Avatar className="size-16">
+                        <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
+                        <AvatarFallback>Avatar</AvatarFallback>
+                    </Avatar>
+                </DetailReviewCard>)}
         </div>
         <Button className="w-50 h-12 border border-neutral-300 rounded-full text-sm font-bold md:text-base">Load
             More</Button>

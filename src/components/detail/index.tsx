@@ -18,7 +18,7 @@ export default function Detail() {
             <DetailInfo book={data?.data}/>
         </section>
         <div className="horizontal-line"></div>
-        <DetailReview/>
+        <DetailReview reviews={data?.data.reviews}/>
         <div className="horizontal-line"></div>
         <DetailRelated/>
     </Fragment>;
