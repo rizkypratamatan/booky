@@ -3,24 +3,30 @@ import DetailDescription from "@/components/detail/DetailDescription.tsx";
 import DetailImage from "@/components/detail/DetailImage.tsx";
 import DetailInfoItem from "@/components/detail/DetailInfoItem.tsx";
 import DetailTitle from "@/components/detail/DetailTitle.tsx";
+import Image from "@/components/ui/Image.tsx";
+import type Book from "@/types/interfaces/Book.ts";
 
 
-export default function DetailInfo() {
+type Props = {
+    book?: Book;
+};
+
+export default function DetailInfo({book}: Props) {
     return <div className="flex flex-col gap-4 items-center md:flex-row md:gap-9">
         <DetailImage>
-            <img className="w-full h-auto" src="/images/book-1.png" alt="Book Thumbnail"/>
+            <Image className="w-full h-auto" src={book?.coverImage ?? ''} alt={`${book?.title} Cover`}/>
         </DetailImage>
         <div className="basis-3/4 flex flex-col gap-4 md:gap-5">
-            <DetailTitle title="The Psychology of Money" category="Business & Economics" author="Morgan Housel" rate="4.9"/>
+            <DetailTitle title={book?.title} category={book?.category.name} author={book?.author.name} rate="4.9"/>
             <div className="flex gap-5">
                 <DetailInfoItem count={320} text="Page"/>
                 <div className="vertical-line"></div>
-                <DetailInfoItem count={212} text="Rating"/>
+                <DetailInfoItem count={book?.rating} text="Rating"/>
                 <div className="vertical-line"></div>
-                <DetailInfoItem count={179} text="Reviews"/>
+                <DetailInfoItem count={book?.reviewCount} text="Reviews"/>
             </div>
             <div className="w-full horizontal-line md:8/10 lg:w-7/10"></div>
-            <DetailDescription/>
+            <DetailDescription description={book?.description}/>
             <DetailAction/>
         </div>
     </div>;

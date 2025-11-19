@@ -6,7 +6,8 @@ export default function CheckoutAgreement() {
         <CheckboxHorizontal containerClass="gap-4" labelClass="text-sm font-semibold md:text-base" value="agree">I agree
             to return the book(s)
             before the due date.</CheckboxHorizontal>
-        <CheckboxHorizontal containerClass="gap-4" labelClass="text-sm font-semibold md:text-base" value="accept">I accept
+        <CheckboxHorizontal containerClass="gap-4" labelClass="text-sm font-semibold md:text-base" value="accept">I
+            accept
             the library borrowing
             policy.</CheckboxHorizontal>
     </div>;
