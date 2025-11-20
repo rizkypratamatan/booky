@@ -3,11 +3,26 @@ import {Button} from "@/components/ui/button.tsx";
 import Search from "@/components/ui/Search.tsx";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs.tsx";
 import useMyLoans from "@/hooks/useMyLoans.ts";
+import type {Loan} from "@/types/interfaces/Loan.ts";
+import dayjs from "dayjs";
+import {useMemo} from "react";
 
 
 export default function AccountBorrowed() {
     const {data} = useMyLoans();
-    console.log(data)
+
+    const all: Loan[] | undefined = useMemo(() => {
+        return data?.data.loans.filter(item => item.status.toLowerCase() === 'borrowed');
+    }, [data]);
+    const actives: Loan[] | undefined = useMemo(() => {
+        return data?.data.loans.filter(item => item.status.toLowerCase() === 'borrowed' && dayjs(item.dueAt).diff(dayjs(item.borrowedAt)) >= 0);
+    }, [data]);
+    const returned: Loan[] | undefined = useMemo(() => {
+        return data?.data.loans.filter(item => item.status.toLowerCase() !== 'borrowed');
+    }, [data]);
+    const overdues: Loan[] | undefined = useMemo(() => {
+        return data?.data.loans.filter(item => item.status.toLowerCase() === 'borrowed' && dayjs(item.dueAt).diff(dayjs(item.borrowedAt)) < 0);
+    }, [data]);
 
     return <div className="flex flex-col gap-6">
         <h2 className="text-2xl font-bold md:text-2xxl">Borrowed List</h2>
@@ -21,36 +36,32 @@ export default function AccountBorrowed() {
             </TabsList>
             <TabsContent value="all" asChild>
                 <section className="flex flex-col gap-4 items-center">
-                    <AccountBorrowedItem/>
-                    <AccountBorrowedItem/>
-                    <AccountBorrowedItem/>
+                    {all?.map((loan: Loan, index: number) =>
+                        <AccountBorrowedItem key={index} loan={loan}/>)}
                     <Button className="w-50 h-12 border border-neutral-300 rounded-full text-sm font-bold md:text-base">Load
                         More</Button>
                 </section>
             </TabsContent>
             <TabsContent value="active" asChild>
                 <section className="flex flex-col gap-4 items-center">
-                    <AccountBorrowedItem/>
-                    <AccountBorrowedItem/>
-                    <AccountBorrowedItem/>
+                    {actives?.map((loan: Loan, index: number) =>
+                        <AccountBorrowedItem key={index} loan={loan}/>)}
                     <Button className="w-50 h-12 border border-neutral-300 rounded-full text-sm font-bold md:text-base">Load
                         More</Button>
                 </section>
             </TabsContent>
             <TabsContent value="returned" asChild>
                 <section className="flex flex-col gap-4 items-center">
-                    <AccountBorrowedItem/>
-                    <AccountBorrowedItem/>
-                    <AccountBorrowedItem/>
+                    {returned?.map((loan: Loan, index: number) =>
+                        <AccountBorrowedItem key={index} loan={loan}/>)}
                     <Button className="w-50 h-12 border border-neutral-300 rounded-full text-sm font-bold md:text-base">Load
                         More</Button>
                 </section>
             </TabsContent>
             <TabsContent value="overdue" asChild>
                 <section className="flex flex-col gap-4 items-center">
-                    <AccountBorrowedItem/>
-                    <AccountBorrowedItem/>
-                    <AccountBorrowedItem/>
+                    {overdues?.map((loan: Loan, index: number) =>
+                        <AccountBorrowedItem key={index} loan={loan}/>)}
                     <Button className="w-50 h-12 border border-neutral-300 rounded-full text-sm font-bold md:text-base">Load
                         More</Button>
                 </section>

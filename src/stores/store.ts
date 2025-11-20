@@ -1,4 +1,5 @@
 import accountSlice from "@/stores/slices/accountSlice";
+import filterSlice from "@/stores/slices/filterSlice.ts";
 import tokenSlice from "@/stores/slices/tokenSlice";
 import {configureStore} from "@reduxjs/toolkit";
 
@@ -6,6 +7,7 @@ import {configureStore} from "@reduxjs/toolkit";
 export const reduxStore = configureStore({
     reducer: {
         account: accountSlice,
+        filter: filterSlice,
         token: tokenSlice,
     },
 });

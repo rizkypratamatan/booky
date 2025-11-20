@@ -28,7 +28,7 @@ export default function App() {
                         <Route index element={<Admin/>}/>
                         <Route path="book/add" element={<AdminBookAdd/>}/>
                     </Route>
-                    <Route path="author" element={<Author/>}/>
+                    <Route path="author/:id" element={<Author/>}/>
                     <Route path="borrowed" element={<Account/>}/>
                     <Route path="cart" element={<Cart/>}/>
                     <Route path="category" element={<Category/>}/>

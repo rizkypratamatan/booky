@@ -1,9 +1,9 @@
 import {apiClient} from "@/lib/apiClient.ts";
-import type MeResponse from "@/types/interfaces/MeResponse.ts";
+import type MyLoansResponse from "@/types/interfaces/MyLoansResponse.ts";
 
 
 export default async function myLoansService() {
-    const {data} = await apiClient.get<MeResponse>('/loans/my');
+    const {data} = await apiClient.get<MyLoansResponse>('/loans/my');
 
     return data;
 }

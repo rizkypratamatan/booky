@@ -11,14 +11,20 @@ import {
 } from "@/components/ui/dialog.tsx";
 import Image from "@/components/ui/Image.tsx";
 import {Textarea} from "@/components/ui/textarea.tsx";
+import type {Loan} from "@/types/interfaces/Loan.ts";
+import dayjs from "dayjs";
 
 
-export default function AccountBorrowedItem() {
+type Props = {
+    loan: Loan;
+};
+
+export default function AccountBorrowedItem({loan}: Props) {
     return <div className="flex flex-col gap-4 w-full p-5 rounded-2xl blur-20 md:gap-5">
-        <BookBorrowedItemStatus/>
+        <BookBorrowedItemStatus dueDate={loan.dueAt} status={loan.status}/>
         <div className="horizontal-line"></div>
         <div className="flex flex-col gap-6 justify-between items-center md:flex-row">
-            <CartItem author="Author name" category="Category" name="Book Name" date="29 Aug 2025" duration="Duration 3 Days">
+            <CartItem author="Author name" category="Category" name={loan.book.title} date={dayjs(loan.borrowedAt).format('DD MMM YYYY')} duration={`Duration ${dayjs(loan.dueAt).diff(dayjs(loan.borrowedAt), 'day').toString()} Days`}>
                 <Image className="w-23 h-auto" src="/images/book-1.png" alt="Book Thumbnail"/>
             </CartItem>
             <Dialog>

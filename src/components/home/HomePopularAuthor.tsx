@@ -11,14 +11,14 @@ export default function HomePopularAuthor() {
 
     return <Fragment>
         <SectionTitle title="Popular Authors"/>
-        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <section className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {data?.data?.authors.map((author: Author, index: number) =>
-                <AuthorCard key={index} name={author.name} bookCount={5}>
+                <AuthorCard key={index} id={author.id} name={author.name} bookCount={5}>
                     <Avatar className="size-15 md:size-20.25">
                         <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
                         <AvatarFallback>Avatar</AvatarFallback>
                     </Avatar>
                 </AuthorCard>)}
-        </div>
+        </section>
     </Fragment>;
 }

@@ -3,10 +3,15 @@ import BookCard from "@/components/ui/BookCard.tsx";
 import Image from "@/components/ui/Image.tsx";
 import SectionTitle from "@/components/ui/SectionTitle.tsx";
 import useBooks from "@/hooks/useBooks.ts";
+import type {RootState} from "@/stores/store.ts";
+import type Filter from "@/types/interfaces/Filter.ts";
+import {useSelector} from "react-redux";
 
 
 export default function Category() {
-    const {data} = useBooks({page: 1, limit: 10});
+    const filter: Filter = useSelector((state: RootState) => state.filter);
+
+    const {data} = useBooks({page: 1, categoryId: filter.category, limit: 10});
     console.log(data)
 
     return <div className="flex flex-col gap-4 md:gap-8">

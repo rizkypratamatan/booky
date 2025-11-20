@@ -4,6 +4,7 @@ import BookRating from "@/components/ui/BookRating.tsx";
 import {Button} from "@/components/ui/button.tsx";
 import SectionTitle from "@/components/ui/SectionTitle.tsx";
 import type Review from "@/types/interfaces/Review.ts";
+import dayjs from "dayjs";
 
 
 type Props = {
@@ -18,7 +19,7 @@ export default function DetailReview({reviews}: Props) {
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {reviews?.map((review: Review, index: number) =>
-                <DetailReviewCard key={index} name={review.user.name} datetime={review.createdAt.toString()} text={review.comment}>
+                <DetailReviewCard key={index} name={review.user.name} datetime={dayjs(review.createdAt).format('DD MMM YYYY')} text={review.comment}>
                     <Avatar className="size-16">
                         <AvatarImage src="/images/avatar-default.png" alt="Avatar"/>
                         <AvatarFallback>Avatar</AvatarFallback>
