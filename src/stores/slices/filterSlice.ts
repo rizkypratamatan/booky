@@ -1,16 +1,18 @@
-import type Filter from "@/types/interfaces/Filter.ts";
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
 
 
 const filterSlice = createSlice({
     name: 'filter',
-    initialState: {category: 0},
+    initialState: {category: 0, q: ''},
     reducers: {
-        setFilter: (state, action: PayloadAction<Filter>) => {
-            state.category = action.payload.category;
+        setFilterCategory: (state, action: PayloadAction<number>) => {
+            state.category = action.payload;
+        },
+        setFilterQ: (state, action: PayloadAction<string>) => {
+            state.q = action.payload;
         }
     },
 });
 
-export const {setFilter} = filterSlice.actions;
+export const {setFilterCategory, setFilterQ} = filterSlice.actions;
 export default filterSlice.reducer;

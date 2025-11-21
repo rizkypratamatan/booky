@@ -9,7 +9,7 @@ export default function AdminBook() {
         <h2 className="text-2xl font-bold md:text-2xxl">Book List</h2>
         <Link className="flex justify-center items-center w-full max-w-60 h-12 bg-primary-300 rounded-full text-sm font-bold text-neutral-25 md:text-base" to="/admin/book/add">Add
             Book</Link>
-        <Search className="max-w-136" placeholder="Search book"/>
+        <Search className="max-w-136" placeholder="Search book" value={''}/>
         <Tabs className="gap-6" defaultValue="all">
             <TabsList className="gap-2 md:gap-3">
                 <TabsTrigger className="w-auto h-10 px-2.5 py-2 border-neutral-300 rounded-full text-xs font-semibold data-[state=active]:bg-neutral-100 data-[state=active]:border-primary-300 data-[state=active]:text-primary-300 sm:px-4 sm:text-sm md:text-base" value="all">All</TabsTrigger>
