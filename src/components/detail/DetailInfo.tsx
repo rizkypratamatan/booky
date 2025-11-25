@@ -17,7 +17,7 @@ export default function DetailInfo({book}: Props) {
             <Image className="w-full h-auto" src={book?.coverImage ?? ''} alt={`${book?.title} Cover`}/>
         </DetailImage>
         <div className="basis-3/4 flex flex-col gap-4 md:gap-5">
-            <DetailTitle title={book?.title} category={book?.category.name} author={book?.author.name} rate="4.9"/>
+            <DetailTitle title={book?.title} category={book?.Category.name} author={book?.Author.name} rate="4.9"/>
             <div className="flex gap-5">
                 <DetailInfoItem count={320} text="Page"/>
                 <div className="vertical-line"></div>

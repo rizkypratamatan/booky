@@ -12,7 +12,7 @@ export default function DetailRelated() {
         <SectionTitle title={"Related Books"}/>
         <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
             {data?.data?.books.map((book: Book, index: number) =>
-                <BookCard key={index} id={book.id} title={book.title} author={book.author.name} rate={book.rating.toString()}>
+                <BookCard key={index} id={book.id} title={book.title} author={book.Author.name} rate={book.rating.toString()}>
                     <Image className="w-full h-auto" src={book.coverImage} alt={`${book.title} Cover`}/>
                 </BookCard>)}
         </div>

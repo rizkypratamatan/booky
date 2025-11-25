@@ -5,7 +5,7 @@ import type Review from "@/types/interfaces/Review.ts";
 
 
 export default interface Book extends Base {
-    author: Author;
+    Author: Author;
 
     authorId: number;
 
@@ -13,7 +13,7 @@ export default interface Book extends Base {
 
     borrowCount: number;
 
-    category: Category;
+    Category: Category;
 
     categoryId: number;
 

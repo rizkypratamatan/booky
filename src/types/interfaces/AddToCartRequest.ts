@@ -1,5 +1,5 @@
 export default interface AddToCartRequest {
-    productId: number;
+    bookId: number;
 
     qty: number;
 }

@@ -20,7 +20,7 @@ export default function Category() {
             <CategoryFilter/>
             <section className="grow grid grid-cols-2 gap-5 max-w-[calc(100%-19.125rem)] sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {data?.data?.books?.map((book: Book, index: number) =>
-                    <BookCard key={index} id={book.id} author={book.author.name} rate={book.rating.toString()} title={book.title}>
+                    <BookCard key={index} id={book.id} author={book.Author.name} rate={book.rating.toString()} title={book.title}>
                         <Image className="w-full h-auto" src={book.coverImage} alt={`${book.title} Cover`}/>
                     </BookCard>)}
             </section>

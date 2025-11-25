@@ -14,7 +14,7 @@ export default function DetailAction({id}: Props) {
 
     return <div className="fixed left-0 bottom-0 flex gap-3 justify-center items-center w-full h-18 bg-background-100 blur-20 md:static md:justify-start md:h-auto md:!shadow-none">
         <Button className="basis-1/3 h-10 border border-neutral-300 rounded-full text-sm font-bold md:basis-50 md:h-12 md:text-base" onClick={() => addToCart({
-            productId: id ?? 0,
+            bookId: id ?? 0,
             qty: 1
         })}>Add
             to Cart</Button>
