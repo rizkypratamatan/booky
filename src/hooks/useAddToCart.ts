@@ -1,9 +1,11 @@
 import addToCartService from "@/services/addToCartService.ts";
 import type AddToCartRequest from "@/types/interfaces/AddToCartRequest.ts";
-import {useMutation} from "@tanstack/react-query";
+import {type QueryClient, useMutation, useQueryClient} from "@tanstack/react-query";
 
 
 export default function useAddToCart() {
+    const queryClient: QueryClient = useQueryClient();
+
     const {mutate, isPending, isError, error, isSuccess} = useMutation({
         mutationFn: (data: AddToCartRequest) => addToCartService(data),
         onError: (error: Error) => {
@@ -11,7 +13,7 @@ export default function useAddToCart() {
         },
         onSettled: (data) => {
             if(data && data.success) {
-                console.log(data);
+                queryClient.invalidateQueries({queryKey: ['cart']}).then();
             }
         }
     });

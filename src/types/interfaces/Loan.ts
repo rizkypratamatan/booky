@@ -3,7 +3,7 @@ import type Book from "@/types/interfaces/Book.ts";
 
 
 export interface Loan extends Base {
-    book: Book;
+    Book: Book;
 
     bookId: number;
 

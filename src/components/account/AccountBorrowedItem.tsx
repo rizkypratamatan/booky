@@ -24,8 +24,8 @@ export default function AccountBorrowedItem({loan}: Props) {
         <BookBorrowedItemStatus dueDate={loan.dueAt} status={loan.status}/>
         <div className="horizontal-line"></div>
         <div className="flex flex-col gap-6 justify-between items-center md:flex-row">
-            <CartItem author={loan.book.Author?.name} category={loan.book.Category?.name} name={loan.book.title} date={dayjs(loan.borrowedAt).format('DD MMM YYYY')} duration={`Duration ${dayjs(loan.dueAt).diff(dayjs(loan.borrowedAt), 'day').toString()} Days`}>
-                <Image className="w-23 h-auto" src="/images/book-1.png" alt="Book Thumbnail"/>
+            <CartItem author={loan.Book.Author?.name} category={loan.Book.Category?.name} name={loan.Book.title} date={dayjs(loan.borrowedAt).format('DD MMM YYYY')} duration={`Duration ${dayjs(loan.dueAt).diff(dayjs(loan.borrowedAt), 'day').toString()} Days`}>
+                <Image className="w-23 h-auto" src={loan.Book.coverImage} alt={`${loan.Book.title} Cover`}/>
             </CartItem>
             <Dialog>
                 <DialogTrigger className="w-full h-10 bg-primary-300 rounded-full text-sm font-bold text-neutral-25 md:w-45.5 md:text-base">Give

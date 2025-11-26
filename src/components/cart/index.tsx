@@ -25,7 +25,7 @@ export default function Cart() {
                         {index < data?.data?.items.length - 2 && <div className="horizontal-line"></div>}
                     </Fragment>)}
             </section>
-            <CartSummary/>
+            <CartSummary items={data?.data?.items}/>
         </div>
     </div>;
 }
