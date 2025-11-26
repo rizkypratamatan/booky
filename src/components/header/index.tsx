@@ -6,6 +6,7 @@ import Logo from "@/components/ui/Logo.tsx";
 import Search from "@/components/ui/Search.tsx";
 import useMe from "@/hooks/useMe.ts";
 import {setAccount} from "@/stores/slices/accountSlice.ts";
+import {setFilterQ} from "@/stores/slices/filterSlice.ts";
 import {setToken} from "@/stores/slices/tokenSlice.ts";
 import type {RootState} from "@/stores/store.ts";
 import type {UnknownAction} from "@reduxjs/toolkit";
@@ -39,7 +40,7 @@ export default function Header() {
     return <header className="fixed z-50 flex gap-6 justify-between items-center w-full h-16 bg-background-100 fit-content blur-20 md:h-20">
         <Link to="/"><Logo containerClass="gap-11.79" imageClass="size-10 md:size-8.25" fontClass="hidden text-3xxl md:block"/></Link>
         <div className={`${search ? 'flex' : 'hidden'} grow gap-4 justify-center items-center duration-300 lg:flex`}>
-            <Search className="w-35 lg:w-auto lg:max-w-125" placeholder="Search book" value={filterQ}/>
+            <Search className="w-35 lg:w-auto lg:max-w-125" placeholder="Search book" value={filterQ} onChange={() => dispatch(setFilterQ(filterQ))}/>
             <XIcon className="size-6 cursor-pointer lg:hidden" onClick={() => setSearch(false)}/>
         </div>
         <div className={`${search ? 'hidden' : 'flex'} gap-6 items-center duration-300 lg:flex`}>
