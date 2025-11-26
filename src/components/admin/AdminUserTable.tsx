@@ -2,6 +2,10 @@ import AdminUserTableItem from "@/components/admin/AdminUserTableItem.tsx";
 import {Fragment} from "react";
 
 
+type Props = {
+
+};
+
 export default function AdminUserTable() {
     return <Fragment>
         <div className="overflow-x-auto">
